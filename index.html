@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Valetiny 💘</title>
+  <meta name="description" content="A tiny, cutesy Valentine-themed site." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg">
+    <div class="floaters" aria-hidden="true"></div>
+  </div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">💌</span>
+      <span class="brandText">Valetiny</span>
+    </div>
+    <nav class="nav">
+      <button class="chip" data-scroll="#card">Open Card</button>
+      <button class="chip" data-scroll="#notes">Love Notes</button>
+      <button class="chip" data-scroll="#playlist">Playlist</button>
+      <button class="chip" id="toggleMode" title="Toggle day/night">🌙</button>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="heroLeft">
+        <h1>
+          A <span class="script">tiny</span> Valentine website
+          <span class="sparkle" aria-hidden="true">✨</span>
+        </h1>
+        <p class="sub">
+          Cute UI, sweet animations, and a little love-note generator.
+          Customize the names + message and share it as a ZIP.
+        </p>
+
+        <div class="inputs">
+          <label class="field">
+            <span>From</span>
+            <input id="fromName" maxlength="24" placeholder="Your name" value="Nok" />
+          </label>
+          <label class="field">
+            <span>To</span>
+            <input id="toName" maxlength="24" placeholder="Their name" value="My Valentine" />
+          </label>
+        </div>
+
+        <div class="ctaRow">
+          <button class="btn primary" id="makeHearts">Make it sparkly 💖</button>
+          <button class="btn" data-scroll="#card">Open the card</button>
+        </div>
+
+        <div class="miniStats" aria-label="Cute badges">
+          <span class="badge">💗 soft vibes</span>
+          <span class="badge">🍓 strawberry blush</span>
+          <span class="badge">✨ glitter mode</span>
+        </div>
+      </div>
+
+      <div class="heroRight" id="card">
+        <div class="cardShell">
+          <div class="card" id="flipCard" role="button" tabindex="0" aria-label="Open the Valentine card">
+            <div class="cardFace front">
+              <div class="stamp">love mail</div>
+              <div class="frontArt" aria-hidden="true">
+                <div class="bigHeart"></div>
+                <div class="miniHearts">
+                  <span>💘</span><span>💝</span><span>💞</span>
+                </div>
+              </div>
+              <div class="frontText">
+                <div class="toLine">To: <span id="toLine">My Valentine</span></div>
+                <div class="tapHint">tap to open</div>
+              </div>
+            </div>
+
+            <div class="cardFace back">
+              <div class="letter">
+                <div class="letterTop">
+                  <div class="from">From: <span id="fromLine">Nok</span></div>
+                  <div class="pill">forever vibes</div>
+                </div>
+
+                <h2 class="dear">Dear <span id="dearLine">My Valentine</span>,</h2>
+                <p class="message" id="mainMessage">
+                  You make ordinary days feel like strawberries and sunshine.
+                </p>
+
+                <div class="compose">
+                  <label class="field">
+                    <span>Message</span>
+                    <textarea id="customMessage" rows="4" maxlength="200"
+                      placeholder="Write something sweet…"></textarea>
+                  </label>
+                  <div class="composeRow">
+                    <button class="btn primary" id="applyMessage">Apply message 💌</button>
+                    <button class="btn" id="copyLink">Copy share text</button>
+                  </div>
+                  <div class="tinyNote" id="copyStatus" aria-live="polite"></div>
+                </div>
+
+                <div class="signature">
+                  <span class="sigScript" id="sigLine">— Nok</span>
+                  <span class="kiss" aria-hidden="true">💋</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hint">
+            Tip: Click the card to flip. Add your own message ✍️
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="panel" id="notes">
+        <div class="panelHead">
+          <h3>Love-note generator</h3>
+          <p>Tap for a new note. Copy and send it 😘</p>
+        </div>
+
+        <div class="noteBox" id="noteBox">
+          <div class="noteTitle">A note for <span id="noteTo">My Valentine</span></div>
+          <div class="noteText" id="noteText">You’re my favorite notification.</div>
+        </div>
+
+        <div class="panelActions">
+          <button class="btn primary" id="newNote">New note 💞</button>
+          <button class="btn" id="copyNote">Copy note</button>
+          <span class="tinyNote" id="noteStatus" aria-live="polite"></span>
+        </div>
+      </article>
+
+      <article class="panel" id="playlist">
+        <div class="panelHead">
+          <h3>Mini playlist (optional)</h3>
+          <p>Drop in your favorite song links. These are just cute placeholders.</p>
+        </div>
+
+        <div class="playlist">
+          <a class="song" href="#" onclick="return false;">
+            <span class="emoji">🎧</span>
+            <span class="songText">
+              <span class="songTitle">Your Song #1</span>
+              <span class="songSub">Paste a link in script.js</span>
+            </span>
+            <span class="go">→</span>
+          </a>
+          <a class="song" href="#" onclick="return false;">
+            <span class="emoji">🍒</span>
+            <span class="songText">
+              <span class="songTitle">Your Song #2</span>
+              <span class="songSub">Or keep it simple</span>
+            </span>
+            <span class="go">→</span>
+          </a>
+          <a class="song" href="#" onclick="return false;">
+            <span class="emoji">🌸</span>
+            <span class="songText">
+              <span class="songTitle">Your Song #3</span>
+              <span class="songSub">Cute vibes only</span>
+            </span>
+            <span class="go">→</span>
+          </a>
+        </div>
+
+        <div class="tinyNote">
+          Want real links? Open <code>script.js</code> and add your URLs + titles.
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="panelHead">
+          <h3>Little extras</h3>
+          <p>Small touches for big feelings.</p>
+        </div>
+
+        <ul class="checklist">
+          <li><span>✅</span> Flip-card animation</li>
+          <li><span>✅</span> Confetti hearts burst</li>
+          <li><span>✅</span> Day/night toggle</li>
+          <li><span>✅</span> Copy-to-clipboard buttons</li>
+          <li><span>✅</span> Responsive layout</li>
+        </ul>
+
+        <div class="panelActions">
+          <button class="btn" id="burst">Heart burst 💥</button>
+          <button class="btn" id="scrollTop">Back to top ↑</button>
+        </div>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <div class="footerInner">
+        <div class="made">
+          Made with <span aria-hidden="true">💘</span> — edit the names and message, then host it anywhere.
+        </div>
+        <div class="small">
+          Tip: You can publish on GitHub Pages / Netlify / Vercel as a static site.
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
